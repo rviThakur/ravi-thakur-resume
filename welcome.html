@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome — Ravi Thakur | Senior Azure Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0F17;
+    --panel: #131B26;
+    --panel-border: rgba(255, 255, 255, 0.08);
+    --text: #F1F5F9;
+    --text-muted: #94A3B8;
+    --cyan: #00F2FE;
+    --purple: #9D4EDD;
+    --amber: #F59E0B;
+    --grid-line: rgba(255, 255, 255, 0.025);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(0, 242, 254, 0.12) 0%, transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(157, 78, 221, 0.12) 0%, transparent 45%),
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/40px 40px,
+      var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px; width: 100%; }
+
+  /* Top Status Bar */
+  .status-bar {
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .badge-available {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cyan);
+    background: rgba(0, 242, 254, 0.08);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 242, 254, 0.3);
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--cyan);
+  }
+
+  /* Main Hero Container */
+  .hero-container {
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  .avatar-wrap {
+    margin: 0 auto 24px;
+    width: 120px;
+    height: 120px;
+    position: relative;
+  }
+
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--cyan);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.25);
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0 0 12px 0;
+    background: linear-gradient(135deg, #FFFFFF 30%, var(--cyan) 70%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: var(--text-muted);
+    max-width: 650px;
+    margin: 0 auto 36px;
+    font-weight: 400;
+  }
+
+  .highlight { color: var(--cyan); font-weight: 500; }
+
+  /* Action Buttons */
+  .cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .btn-primary {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    padding: 12px 28px;
+    background: var(--cyan);
+    color: var(--bg);
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.6);
+  }
+
+  .btn-secondary {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    padding: 12px 28px;
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    transform: translateY(-2px);
+  }
+
+  /* Feature Cards */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    text-align: left;
+  }
+
+  .feature-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    padding: 24px;
+    border-radius: 10px;
+    transition: border-color 0.2s ease;
+  }
+
+  .feature-card:hover { border-color: rgba(0, 242, 254, 0.4); }
+
+  .feature-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--cyan);
+    margin-bottom: 8px;
+  }
+
+  .feature-card p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  footer {
+    padding: 30px 0;
+    border-top: 1px solid var(--panel-border);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="status-bar">
+    <span>📍 Gurgaon, India</span>
+    <div class="badge-available">
+      <span class="dot"></span> Senior Azure Data Engineer
+    </div>
+  </div>
+
+  <main class="hero-container">
+    <div class="avatar-wrap">
+      <img src="profile.jpg" alt="Ravi Thakur" class="avatar-img" onerror="this.src='https://via.placeholder.com/120/131B26/00F2FE?text=RT'">
+    </div>
+    
+    <h1>Ravi Thakur</h1>
+    <p class="subtitle">
+      Building enterprise <span class="highlight">Azure Data Pipelines</span>, scalable Data Warehouses, and <span class="highlight">Generative AI RAG solutions</span> with 6+ years of engineering experience.
+    </p>
+
+    <div class="cta-group">
+      <a href="index.html" class="btn-primary">Explore Full Resume →</a>
+      <a href="projects.html" class="btn-secondary">View Case Studies</a>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-title">// Cloud Architecture</div>
+        <p>Azure Data Factory, Databricks, Synapse Analytics, ADLS Gen2, PySpark, and Unity Catalog.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">// Scale &amp; Performance</div>
+        <p>20+ TB Data Warehouse Migrations and 40+ TB Environment Replications with zero loss.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">// GenAI &amp; Fabric</div>
+        <p>RAG Interview Platforms with LlamaIndex/OpenAI &amp; Microsoft Fabric implementation.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 Ravi Thakur — ravi-thakur-resume
+  </footer>
+</div>
+
+</body>
+</html>
