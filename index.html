@@ -16,7 +16,6 @@
     --text-muted: #94A3B8;
     --cyan: #00F2FE;
     --purple: #9D4EDD;
-    --green: #10B981;
     --amber: #F59E0B;
     --grid-line: rgba(255, 255, 255, 0.025);
   }
@@ -43,7 +42,7 @@
   /* Navbar */
   .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 24px 0;
     border-bottom: 1px solid var(--panel-border);
@@ -52,12 +51,6 @@
     background: rgba(11, 15, 23, 0.95);
     backdrop-filter: blur(8px);
     z-index: 100;
-  }
-
-  .nav-brand {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500;
-    color: var(--cyan);
   }
 
   .nav-links {
@@ -87,7 +80,7 @@
   }
 
   /* Hero Section */
-  .hero { padding: 56px 0 40px; }
+  .hero { padding: 40px 0; }
 
   .hero h1 {
     font-family: 'Space Grotesk', sans-serif;
@@ -140,17 +133,14 @@
     color: var(--text-muted);
   }
 
-  /* Executive Summary & Image */
+  /* About Me Section */
   .about-container {
     display: flex;
     gap: 28px;
     align-items: center;
   }
 
-  .profile-img-container {
-    position: relative;
-    flex-shrink: 0;
-  }
+  .profile-img-container { flex-shrink: 0; }
 
   .profile-img {
     width: 140px;
@@ -200,10 +190,25 @@
     color: var(--text);
   }
 
-  .chip-ai { border-color: rgba(157, 78, 221, 0.4); }
+  /* Experience Section List */
+  .job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 
-  /* Experience Section */
-  .job { margin-bottom: 40px; }
+  .job-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 24px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .job-card:hover {
+    border-color: rgba(0, 242, 254, 0.4);
+    transform: translateY(-2px);
+  }
 
   .job-head {
     display: flex;
@@ -211,7 +216,7 @@
     align-items: baseline;
     justify-content: space-between;
     gap: 8px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .job-head h3 {
@@ -221,39 +226,30 @@
     margin: 0;
   }
 
-  .job-link { color: #FFF; transition: color 0.2s ease; }
-  .job-link:hover { color: var(--cyan); text-decoration: underline; }
-
   .job-dates {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;
     color: var(--cyan);
   }
 
-  .job-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px; }
-  .job ul { margin: 0 0 16px 0; padding-left: 20px; }
-  .job li { margin-bottom: 8px; color: var(--text-muted); }
+  .job-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 14px; }
 
-  .metric { color: var(--amber); font-weight: 600; }
-
-  /* Hover Dropdown Menu under Welspun */
+  /* Dropdown Menu under Welspun */
   .dropdown {
     position: relative;
     display: inline-block;
+    margin-left: 8px;
   }
 
   .dropdown-btn {
     color: var(--cyan);
     cursor: pointer;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 4px 8px;
+    font-size: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 3px 8px;
     background: rgba(0, 242, 254, 0.08);
     border-radius: 4px;
     border: 1px dashed rgba(0, 242, 254, 0.4);
-    margin-top: 4px;
   }
 
   .dropdown-content {
@@ -263,8 +259,8 @@
     left: 0;
     background: var(--panel);
     border: 1px solid var(--panel-border);
-    min-width: 300px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    min-width: 320px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
     border-radius: 8px;
     padding: 8px 0;
     z-index: 50;
@@ -283,32 +279,32 @@
     color: var(--cyan);
   }
 
-  .dropdown:hover .dropdown-content {
-    display: block;
+  .dropdown:hover .dropdown-content { display: block; }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
   }
 
-  .subproject {
-    margin: 18px 0;
-    padding: 20px 24px;
-    background: var(--panel);
+  .p-link-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--panel-border);
-    border-left: 3px solid var(--cyan);
-    border-radius: 8px;
+    border-radius: 6px;
+    color: var(--cyan);
+    transition: all 0.2s ease;
   }
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-
-  /* Animations */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  .p-link-btn:hover {
+    background: rgba(0, 242, 254, 0.15);
+    border-color: var(--cyan);
   }
 
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .metric { color: var(--amber); font-weight: 600; }
 
   footer {
     padding: 40px 0 60px;
@@ -322,7 +318,6 @@
 
   @media (max-width: 640px) {
     .about-container { flex-direction: column; text-align: center; }
-    .grid-2 { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -331,16 +326,15 @@
 <div class="wrap">
 
   <nav class="navbar">
-    <span class="nav-brand">// azure_data_engineer</span>
     <div class="nav-links">
       <a href="#summary">Summary</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
-      <a href="projects.html" class="nav-btn">View Projects →</a>
+      <a href="projects.html" class="nav-btn">View All Projects →</a>
     </div>
   </nav>
 
-  <header class="hero reveal">
+  <header class="hero">
     <h1>Ravi Thakur</h1>
     <div class="role">Senior Azure Data Engineer</div>
     <div class="meta-row">
@@ -351,7 +345,7 @@
     </div>
   </header>
 
-  <section class="summary reveal" id="summary">
+  <section class="summary" id="summary">
     <div class="section-head">
       <h2>Executive Summary</h2>
       <span class="tag">About Me</span>
@@ -359,8 +353,7 @@
 
     <div class="about-container">
       <div class="profile-img-container">
-        <!-- Replace profile.jpg with your uploaded image filename -->
-        <img src="profile.jpg" alt="Ravi Thakur - Azure Data Engineer" class="profile-img" onerror="this.src='https://via.placeholder.com/140/131B26/00F2FE?text=Data+Engineer'">
+        <img src="profile.jpg" alt="Ravi Thakur - Senior Azure Data Engineer" class="profile-img" onerror="this.src='https://via.placeholder.com/140/131B26/00F2FE?text=Data+Engineer'">
       </div>
       <div>
         <p style="margin-top: 0;">
@@ -371,7 +364,7 @@
 
     <div class="summary-grid">
       <div class="summary-card">
-        <div class="summary-card-title">Cloud &amp; Pipelines</div>
+        <div class="summary-card-title">Cloud &amp; Data Pipelines</div>
         <p>Specialized in Azure Data Factory, Databricks, PySpark, Synapse, and Unity Catalog governance.</p>
       </div>
       <div class="summary-card">
@@ -385,7 +378,7 @@
     </div>
   </section>
 
-  <section id="skills" class="reveal">
+  <section id="skills">
     <div class="section-head">
       <h2>Technical Skills</h2>
       <span class="tag">Core Stack</span>
@@ -416,101 +409,82 @@
   </section>
 
   <section id="experience">
-    <div class="section-head reveal">
+    <div class="section-head">
       <h2>Professional Experience</h2>
       <span class="tag">4 Roles</span>
     </div>
 
-    <!-- Role 1 -->
-    <div class="job reveal">
-      <div class="job-head">
-        <h3><a href="projects.html#shell" class="job-link">Senior Associate – Azure Data Engineer ↗</a></h3>
-        <span class="job-dates">December 2024 – Present</span>
-      </div>
-      <div class="job-sub">Publicis Sapient | Gurgaon, India · Client: Shell</div>
-      <ul>
-        <li>Designed enterprise-scale Azure data solutions using Azure Data Factory, Azure Databricks, Azure Synapse Analytics, Azure SQL, and Unity Catalog.</li>
-        <li>Migrated <span class="metric">20+ TB</span> of data from Azure Synapse Dedicated SQL Pools to upgraded v2 architecture with <span class="metric">100%</span> migration accuracy.</li>
-      </ul>
-    </div>
+    <div class="job-list">
 
-    <!-- Role 2 (Welspun with Dropdown on Hover) -->
-    <div class="job reveal">
-      <div class="job-head">
-        <h3>Azure Data Engineer</h3>
-        <span class="job-dates">May 2022 – December 2024</span>
-      </div>
-      <div class="job-sub">
-        Welspun Transformation Services Ltd.
-        <div class="dropdown">
-          <span class="dropdown-btn">📁 Select Project Options ▾</span>
-          <div class="dropdown-content">
-            <a href="projects.html#mpa">📊 Material Price Analysis Pipeline</a>
-            <a href="projects.html#welhire">🤖 Wel-Hire AI Interview Platform (RAG)</a>
-            <a href="projects.html#fabric">⚡ Microsoft Fabric Implementation</a>
-          </div>
+      <!-- Role 1 -->
+      <div class="job-card">
+        <div class="job-head">
+          <h3>Senior Associate – Azure Data Engineer</h3>
+          <span class="job-dates">December 2024 – Present</span>
+        </div>
+        <div class="job-sub">Publicis Sapient | Gurgaon, India · Client: Shell</div>
+        <div class="project-links">
+          <a href="projects.html?project=shell" class="p-link-btn">View Shell Migration Project Details →</a>
         </div>
       </div>
 
-      <div class="subproject reveal">
-        <h4><a href="projects.html#mpa" class="job-link">Project: Material Price Analysis ↗</a></h4>
-        <ul>
-          <li>Developed ETL/ELT pipelines integrating data from SAP systems, APIs, and enterprise sources.</li>
-          <li>Built ingestion pipelines with ADF and ADLS Gen2; PySpark transformation workflows in Databricks.</li>
-        </ul>
+      <!-- Role 2 -->
+      <div class="job-card">
+        <div class="job-head">
+          <h3>Azure Data Engineer</h3>
+          <span class="job-dates">May 2022 – December 2024</span>
+        </div>
+        <div class="job-sub">
+          Welspun Transformation Services Ltd. | Gurgaon, India
+          <div class="dropdown">
+            <span class="dropdown-btn">Projects Menu ▾</span>
+            <div class="dropdown-content">
+              <a href="projects.html?project=mpa">📊 Material Price Analysis Pipeline</a>
+              <a href="projects.html?project=welhire">🤖 Wel-Hire AI Interview Platform (RAG)</a>
+              <a href="projects.html?project=fabric">⚡ Microsoft Fabric Implementation</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-links">
+          <a href="projects.html?project=mpa" class="p-link-btn">Material Price Analysis Pipeline →</a>
+          <a href="projects.html?project=welhire" class="p-link-btn">Wel-Hire AI Platform →</a>
+          <a href="projects.html?project=fabric" class="p-link-btn">Microsoft Fabric Implementation →</a>
+        </div>
       </div>
 
-      <div class="subproject reveal">
-        <h4><a href="projects.html#welhire" class="job-link">Project: Wel-Hire – AI Based Interview Platform ↗</a></h4>
-        <span class="role-tag" style="color:var(--purple); font-size:12px;">Generative AI Developer (RAG Architecture)</span>
-        <ul>
-          <li>Designed and developed a RAG-based AI interview platform using enterprise knowledge sources.</li>
-          <li>Integrated OpenAI APIs with LlamaIndex for context-aware responses using technical docs.</li>
-        </ul>
+      <!-- Role 3 -->
+      <div class="job-card">
+        <div class="job-head">
+          <h3>Azure Data Engineer</h3>
+          <span class="job-dates">April 2021 – April 2022</span>
+        </div>
+        <div class="job-sub">Gokul Agro Resources Ltd. | Ahmedabad, India</div>
+        <div class="project-links">
+          <a href="projects.html?project=gokul" class="p-link-btn">View Manufacturing Pipeline Details →</a>
+        </div>
       </div>
 
-      <div class="subproject reveal">
-        <h4><a href="projects.html#fabric" class="job-link">Project: Microsoft Fabric Implementation ↗</a></h4>
-        <span class="role-tag" style="color:var(--purple); font-size:12px;">Client: Sintex</span>
-        <ul>
-          <li>Led Fabric implementation from PoC through platform evaluation and infrastructure setup.</li>
-          <li>Configured Fabric Lakehouse, Fabric Data Factory, workspaces, and data integration.</li>
-        </ul>
+      <!-- Role 4 -->
+      <div class="job-card">
+        <div class="job-head">
+          <h3>Data Engineer</h3>
+          <span class="job-dates">January 2019 – March 2021</span>
+        </div>
+        <div class="job-sub">Nilkanth Concast Pvt. Ltd. | Ahmedabad, India</div>
+        <div class="project-links">
+          <a href="projects.html?project=nilkanth" class="p-link-btn">View Production Data Engineering Details →</a>
+        </div>
       </div>
-    </div>
 
-    <!-- Role 3 -->
-    <div class="job reveal">
-      <div class="job-head">
-        <h3><a href="projects.html#gokul" class="job-link">Azure Data Engineer – Gokul Agro Resources ↗</a></h3>
-        <span class="job-dates">April 2021 – April 2022</span>
-      </div>
-      <div class="job-sub">Gokul Agro Resources Ltd.</div>
-      <ul>
-        <li>Developed Azure-based data integration solutions for Manufacturing operations using Python and SQL.</li>
-      </ul>
     </div>
   </section>
 
   <footer>
     <div>© 2026 Ravi Thakur</div>
-    <div><a href="projects.html" style="color:var(--cyan);">Explore Projects Portfolio →</a></div>
+    <div><a href="projects.html" style="color:var(--cyan);">Explore All Projects →</a></div>
   </footer>
 
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-  });
-</script>
 </body>
 </html>
