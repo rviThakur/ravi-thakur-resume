@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ravi Thakur — Project Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Projects — Ravi Thakur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0B0F17;
@@ -14,139 +16,270 @@
     --text-muted: #94A3B8;
     --cyan: #00F2FE;
     --purple: #9D4EDD;
-    --green: #10B981;
     --amber: #F59E0B;
+    --grid-line: rgba(255, 255, 255, 0.025);
   }
 
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    background: var(--bg);
+    background: 
+      radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 85% 65%, rgba(157, 78, 221, 0.08) 0%, transparent 40%),
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/40px 40px,
+      var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
-    padding: 40px 20px;
     line-height: 1.6;
   }
 
-  .container { max-width: 900px; margin: 0 auto; }
-  
-  nav { margin-bottom: 40px; }
-  nav a {
-    color: var(--cyan);
-    text-decoration: none;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 14px;
-    display: inline-flex;
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px; }
+
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    transition: transform 0.2s ease;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--panel-border);
+    position: sticky;
+    top: 0;
+    background: rgba(11, 15, 23, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
   }
-  nav a:hover { transform: translateX(-4px); }
 
-  h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; margin-bottom: 8px; }
-  .subtitle { color: var(--text-muted); margin-bottom: 40px; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
 
-  .project-card {
+  .nav-btn {
+    padding: 6px 14px;
+    background: rgba(0, 242, 254, 0.1);
+    color: var(--cyan) !important;
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    border-radius: 6px;
+  }
+
+  /* Filter Navigation Tabs */
+  .project-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--panel-border);
+  }
+
+  .tab-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    padding: 8px 16px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .tab-btn:hover, .tab-btn.active {
+    background: rgba(0, 242, 254, 0.1);
+    color: var(--cyan);
+    border-color: var(--cyan);
+  }
+
+  /* Single Display Card */
+  .project-display {
     background: var(--panel);
     border: 1px solid var(--panel-border);
     border-radius: 12px;
-    padding: 28px;
-    margin-bottom: 24px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 36px;
+    margin-bottom: 60px;
   }
 
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 4px; height: 100%;
+  .project-display h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    color: #FFF;
+    margin: 0 0 8px 0;
   }
 
-  .card-synapse::before { background: linear-gradient(to bottom, var(--cyan), var(--purple)); }
-  .card-ai::before { background: linear-gradient(to bottom, var(--purple), var(--amber)); }
-  .card-fabric::before { background: linear-gradient(to bottom, var(--green), var(--cyan)); }
-  .card-mpa::before { background: linear-gradient(to bottom, var(--amber), var(--green)); }
-
-  .project-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(0, 242, 254, 0.3);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  .company-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--cyan);
+    margin-bottom: 20px;
   }
 
-  .project-title { font-size: 1.35rem; font-weight: 700; font-family: 'Space Grotesk', sans-serif; margin-bottom: 4px; }
-  .project-client { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
-  .project-tech { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--cyan); margin-bottom: 16px; display: block; }
-
-  ul { margin: 0; padding-left: 20px; color: var(--text-muted); }
-  li { margin-bottom: 6px; }
-
-  .fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.7s ease forwards;
+  .bullet-list {
+    margin: 20px 0;
+    padding-left: 20px;
   }
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.25s; }
-  .delay-3 { animation-delay: 0.4s; }
 
-  @keyframes fadeInUp {
-    to { opacity: 1; transform: translateY(0); }
+  .bullet-list li {
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .metric { color: var(--amber); font-weight: 600; }
+
+  footer {
+    padding: 40px 0 60px;
+    border-top: 1px solid var(--panel-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 14px;
   }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <nav>
-    <a href="index.html">← Back to Main Resume</a>
+<div class="wrap">
+
+  <nav class="navbar">
+    <div style="font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700;">Ravi Thakur Portfolio</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">← Back to Overview</a>
+    </div>
   </nav>
 
-  <h1 class="fade-up">Featured Engineering Projects</h1>
-  <p class="subtitle fade-up delay-1">Detailed technical implementations of data pipeline architectures, Generative AI models, and enterprise migrations.</p>
-
-  <div class="project-card card-synapse fade-up delay-1">
-    <div class="project-title">Enterprise Synapse to v2 Migration &amp; Governance</div>
-    <div class="project-client">Publicis Sapient | Client: Shell</div>
-    <span class="project-tech">Azure Data Factory · Databricks · Synapse · Unity Catalog · PySpark · Entra ID</span>
-    <ul>
-      <li>Migrated 20+ TB of enterprise data from Synapse Dedicated SQL Pools to v2 architecture with 100% accuracy.</li>
-      <li>Engineered an automated Unity Catalog cloning framework that migrated 40+ TB between environments in under 4 hours.</li>
-      <li>Created an RBAC access framework using Microsoft Entra ID to manage roles and secure data views automatically.</li>
-    </ul>
+  <div class="project-selector">
+    <button class="tab-btn" onclick="showProject('shell')">Shell Migration</button>
+    <button class="tab-btn" onclick="showProject('mpa')">Material Price Analysis</button>
+    <button class="tab-btn" onclick="showProject('welhire')">Wel-Hire AI Platform</button>
+    <button class="tab-btn" onclick="showProject('fabric')">Microsoft Fabric (Sintex)</button>
+    <button class="tab-btn" onclick="showProject('gokul')">Gokul Agro Pipelines</button>
+    <button class="tab-btn" onclick="showProject('nilkanth')">Nilkanth Concast</button>
   </div>
 
-  <div class="project-card card-ai fade-up delay-2">
-    <div class="project-title">Wel-Hire — RAG-Based AI Interview Platform</div>
-    <div class="project-client">Welspun Transformation Services Ltd.</div>
-    <span class="project-tech">Python · OpenAI API · LlamaIndex · LangChain · MongoDB · RAG</span>
-    <ul>
-      <li>Built an enterprise RAG system conducting automated candidate interviews using technical docs and job descriptions.</li>
-      <li>Integrated MongoDB backend for dynamic document retrieval and evaluation workflows.</li>
-      <li>Executed 5,000+ AI interviews, assisting in 100+ position closures in 3 months.</li>
-    </ul>
-  </div>
+  <!-- Container where active project loads -->
+  <div id="project-container"></div>
 
-  <div class="project-card card-fabric fade-up delay-3">
-    <div class="project-title">Microsoft Fabric Analytics Implementation</div>
-    <div class="project-client">Welspun Transformation Services Ltd. | Client: Sintex</div>
-    <span class="project-tech">Microsoft Fabric · Fabric Data Factory · Lakehouse · SQL · Power BI · SAP HANA</span>
-    <ul>
-      <li>Led implementation from PoC to production across Lakehouse setup and workspace configuration.</li>
-      <li>Ingested data from SAP HANA into Lakehouse, developing SQL transformation pipelines for Finance and Manufacturing BI.</li>
-    </ul>
-  </div>
+  <footer>
+    <div>© 2026 Ravi Thakur</div>
+    <div><a href="index.html" style="color:var(--cyan);">Back to Resume →</a></div>
+  </footer>
 
-  <div class="project-card card-mpa fade-up delay-3">
-    <div class="project-title">Material Price Analysis Pipeline</div>
-    <div class="project-client">Welspun Transformation Services Ltd.</div>
-    <span class="project-tech">Azure Data Factory · Databricks · ADLS Gen2 · Azure SQL · PySpark · Power BI · SAP</span>
-    <ul>
-      <li>Built end-to-end ingestion and PySpark processing pipelines for SAP systems and external APIs.</li>
-      <li>Curated production data for Power BI dashboards analyzing material costs and vendor metrics.</li>
-    </ul>
-  </div>
 </div>
+
+<script>
+  // Complete exact resume bullet content mapped by key
+  const projectsData = {
+    shell: {
+      title: "Senior Associate – Azure Data Engineer",
+      company: "Publicis Sapient | Client: Shell",
+      dates: "December 2024 – Present",
+      bullets: [
+        "Designed enterprise-scale Azure data solutions leveraging Azure Data Factory, Azure Databricks, Azure Synapse Analytics, Azure SQL, and Unity Catalog for data governance and lifecycle management.",
+        "Migrated <span class='metric'>20+ TB</span> of historical and transactional data from Azure Synapse Dedicated SQL Pools to upgraded v2 architecture with <span class='metric'>100%</span> migration accuracy and zero data loss.",
+        "Replicated and synchronized <span class='metric'>40+ TB</span> data across multiple Azure environments (Dev, QA, Prod) ensuring strict governance, access control, and structural integrity.",
+        "Developed end-to-end Automated Data Validation Framework in PySpark/Azure Databricks, reducing manual validation effort by <span class='metric'>80%</span> and automating schema, record-count, and data-reconciliation checks across staging and target environments.",
+        "Built PySpark transformation workflows in Databricks with Unity Catalog governance, optimizing memory consumption and query execution speed by <span class='metric'>35%</span>.",
+        "Implemented Delta Lake table optimizations (Z-Ordering, Liquid Clustering, Vacuum, Delta Lake Change Data Feed) across critical analytical datasets."
+      ]
+    },
+    mpa: {
+      title: "Project: Material Price Analysis Pipeline",
+      company: "Welspun Transformation Services Ltd.",
+      dates: "May 2022 – December 2024",
+      bullets: [
+        "Developed scalable ETL/ELT pipelines integrating data from SAP systems, external APIs, and internal enterprise data sources.",
+        "Built data ingestion pipelines using Azure Data Factory and ADLS Gen2, and PySpark-based data transformation workflows within Azure Databricks.",
+        "Designed and maintained Star and Snowflake schemas in data warehousing layers to optimize query execution and analytical reporting.",
+        "Engineered incremental loading mechanisms (SCD Type 1 & Type 2) to maintain historical data tracking and data consistency across reporting views.",
+        "Collaborated with cross-functional teams and Power BI developers to optimize data models, semantic layers, and query performance."
+      ]
+    },
+    welhire: {
+      title: "Project: Wel-Hire – AI Based Interview Platform",
+      company: "Welspun Transformation Services Ltd. (Generative AI Development)",
+      dates: "May 2022 – December 2024",
+      bullets: [
+        "Designed and developed a Retrieval-Augmented Generation (RAG) based AI interview platform leveraging internal knowledge bases and technical document repositories.",
+        "Integrated OpenAI APIs with LlamaIndex framework to build context-aware interview response analysis and candidate evaluation workflows.",
+        "Managed unstructured textual data ingestion, text chunking, embedding generation, and vector index storage using MongoDB.",
+        "Built automated evaluation pipelines to process candidate transcripts, compare answers against domain benchmarks, and generate objective evaluation reports.",
+        "Implemented prompt engineering techniques and system instructions to improve domain precision, eliminate AI hallucination, and ensure consistent grading criteria."
+      ]
+    },
+    fabric: {
+      title: "Project: Microsoft Fabric Implementation",
+      company: "Welspun Transformation Services Ltd. | Client: Sintex",
+      dates: "May 2022 – December 2024",
+      bullets: [
+        "Led Microsoft Fabric implementation initiative from initial PoC through technical evaluation and infrastructure configuration.",
+        "Configured Fabric Lakehouse, Fabric Data Factory, and Workspace architecture, establishing data integration pipelines.",
+        "Evaluated DirectLake mode performance against traditional Import mode in Power BI to optimize real-time reporting architectures.",
+        "Implemented OneLake security models, workspace role assignments, and governance policies for cross-team data access."
+      ]
+    },
+    gokul: {
+      title: "Azure Data Engineer",
+      company: "Gokul Agro Resources Ltd.",
+      dates: "April 2021 – April 2022",
+      bullets: [
+        "Developed Azure-based data integration and pipeline solutions for Manufacturing operations using Python and SQL.",
+        "Built automated data pipelines using Azure Data Factory to ingest operational data into ADLS Gen2 and Azure SQL Database.",
+        "Wrote complex SQL queries, stored procedures, views, and index optimizations for analytical reporting.",
+        "Implemented automated data quality checks and schema validation in data processing workflows."
+      ]
+    },
+    nilkanth: {
+      title: "Data Engineer",
+      company: "Nilkanth Concast Pvt. Ltd.",
+      dates: "January 2019 – March 2021",
+      bullets: [
+        "Managed enterprise SQL Server databases, designing relational schemas, indexing strategies, and automated ETL workflows.",
+        "Developed Python scripts for automated data extraction, parsing, and structured data loading into analytical data stores.",
+        "Created custom SQL dashboards and reports to support operational analytics, sales tracking, and inventory management."
+      ]
+    }
+  };
+
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  function showProject(key) {
+    const data = projectsData[key] || projectsData['shell'];
+    
+    // Update Active Tab UI
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(key));
+    if (activeBtn) activeBtn.classList.add('active');
+
+    // Render exact resume text
+    const container = document.getElementById('project-container');
+    container.innerHTML = `
+      <div class="project-display">
+        <h1>${data.title}</h1>
+        <div class="company-badge">${data.company} | ${data.dates}</div>
+        <ul class="bullet-list">
+          ${data.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    let initialProject = getQueryParam('project');
+    if (!initialProject || !projectsData[initialProject]) {
+      const hash = window.location.hash.replace('#', '');
+      initialProject = projectsData[hash] ? hash : 'shell';
+    }
+    showProject(initialProject);
+  });
+</script>
 
 </body>
 </html>
