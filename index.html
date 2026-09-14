@@ -15,7 +15,6 @@
     --text: #F1F5F9;
     --text-muted: #94A3B8;
     
-    /* Vibrant Color Accents */
     --cyan: #00F2FE;
     --purple: #9D4EDD;
     --green: #10B981;
@@ -42,15 +41,19 @@
   a { color: inherit; text-decoration: none; }
 
   .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px; }
-  code, .mono { font-family: 'IBM Plex Mono', monospace; }
 
-  /* Navbar Navigation */
+  /* Navbar */
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 24px 0;
     border-bottom: 1px solid var(--panel-border);
+    position: sticky;
+    top: 0;
+    background: rgba(11, 15, 23, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
   }
 
   .nav-brand {
@@ -67,10 +70,12 @@
     font-size: 13px;
   }
 
+  .nav-links a:hover { color: var(--cyan); }
+
   .nav-btn {
     padding: 6px 14px;
     background: rgba(0, 242, 254, 0.1);
-    color: var(--cyan);
+    color: var(--cyan) !important;
     border: 1px solid rgba(0, 242, 254, 0.3);
     border-radius: 6px;
     transition: all 0.3s ease;
@@ -78,44 +83,45 @@
 
   .nav-btn:hover {
     background: var(--cyan);
-    color: var(--bg);
+    color: var(--bg) !important;
     box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
     transform: translateY(-2px);
   }
 
   /* Hero Section */
-  .hero { padding: 64px 0 48px; }
+  .hero { padding: 56px 0 40px; }
 
   .hero h1 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.8rem, 6vw, 4.4rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
     line-height: 1.05;
     background: linear-gradient(135deg, #FFFFFF 30%, var(--cyan) 70%, var(--purple) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin: 0;
   }
 
   .hero .role {
-    margin-top: 14px;
+    margin-top: 12px;
     font-size: clamp(1.1rem, 2vw, 1.35rem);
     color: var(--cyan);
     font-weight: 500;
   }
 
   .meta-row {
-    margin-top: 24px;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 18px;
+    gap: 16px;
     font-size: 14px;
     color: var(--text-muted);
   }
 
   .meta-row a:hover { color: var(--cyan); }
 
-  /* Section Shell & Chips */
-  section { padding: 48px 0; border-top: 1px solid var(--panel-border); }
+  /* Sections */
+  section { padding: 44px 0; border-top: 1px solid var(--panel-border); }
 
   .section-head {
     display: flex;
@@ -127,11 +133,40 @@
   .section-head h2 {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.6rem;
+    margin: 0;
   }
 
   .section-head .tag {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* Summary Highlights Grid */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .summary-card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    padding: 16px 20px;
+    border-radius: 8px;
+  }
+
+  .summary-card-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--cyan);
+    margin-bottom: 6px;
+  }
+
+  .summary-card p {
+    margin: 0;
+    font-size: 14px;
     color: var(--text-muted);
   }
 
@@ -161,7 +196,7 @@
     box-shadow: 0 4px 14px rgba(157, 78, 221, 0.3);
   }
 
-  /* Experience Section Styling */
+  /* Experience Section */
   .job { margin-bottom: 40px; }
   .job:last-child { margin-bottom: 0; }
 
@@ -178,6 +213,7 @@
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.25rem;
     color: #FFF;
+    margin: 0;
   }
 
   .job-dates {
@@ -193,7 +229,7 @@
   }
 
   .job ul { margin: 0 0 16px 0; padding-left: 20px; }
-  .job li { margin-bottom: 8px; color: var(--text); }
+  .job li { margin-bottom: 8px; color: var(--text-muted); }
 
   .metric { color: var(--amber); font-weight: 600; }
 
@@ -215,7 +251,7 @@
 
   .subproject h4 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     margin: 0 0 4px 0;
   }
 
@@ -229,7 +265,7 @@
 
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 
-  /* Scroll Reveal Class */
+  /* Animations for elements */
   .reveal {
     opacity: 0;
     transform: translateY(28px);
@@ -265,11 +301,12 @@
 <div class="wrap">
 
   <nav class="navbar">
-    <span class="nav-brand">ravi.thakur // data_eng</span>
+    <span class="nav-brand">// azure_data_engineer</span>
     <div class="nav-links">
+      <a href="#summary">Summary</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
-      <a href="projects.html" class="nav-btn">View All Projects →</a>
+      <a href="projects.html" class="nav-btn">View Projects →</a>
     </div>
   </nav>
 
@@ -278,33 +315,45 @@
     <div class="role">Senior Azure Data Engineer</div>
     <div class="meta-row">
       <span>📍 Gurgaon, India</span>
+      <a href="tel:+917600880477">📞 +91 7600880477</a>
       <a href="mailto:ravithakur.rt91@gmail.com">✉️ ravithakur.rt91@gmail.com</a>
-      <a href="tel:+917600880477">📞 +91 76008 80477</a>
       <a href="https://linkedin.com/in/ravi-thakur-0193b7187" target="_blank" rel="noopener">🔗 LinkedIn</a>
     </div>
   </header>
 
   <section class="summary reveal" id="summary">
     <div class="section-head">
-      <h2>Summary</h2>
-      <span class="tag">6+ yrs / 5 in Azure</span>
+      <h2>Executive Summary</h2>
+      <span class="tag">Overview</span>
     </div>
-    <p>
-      Senior Associate at Publicis Sapient, Gurgaon, with <span class="metric">6+ years</span> of overall experience and <span class="metric">5 years</span> focused on Azure data engineering — pipelines, SQL, PySpark, and Azure Databricks. Background spans Azure ETL services, with current training in Azure Databricks and SQL.
+    <p style="margin-top: 0;">
+      Senior Associate at Publicis Sapient with <span class="metric">6+ years</span> total engineering experience and <span class="metric">5 years</span> specializing in enterprise Azure Data Engineering. Proven expertise delivering cloud architectures across Finance, Banking, Supply Chain, and Manufacturing.
     </p>
-    <p>
-      Delivered data solutions across accounting &amp; finance, banking, supply chain, and manufacturing. Also built a <span style="color:var(--purple); font-weight:600;">RAG-based</span> AI interview platform, applying the same pipeline discipline to unstructured, LLM-driven data.
-    </p>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="summary-card-title">Cloud & Pipelines</div>
+        <p>Specialized in Azure Data Factory, Databricks, PySpark, Synapse, and Unity Catalog governance.</p>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-title">Generative AI</div>
+        <p>Hands-on builder of RAG interview platforms using OpenAI APIs, LlamaIndex, and MongoDB.</p>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-title">Enterprise Scale</div>
+        <p>Executed 20+ TB warehouse migrations and 40+ TB environment replications with zero data loss.</p>
+      </div>
+    </div>
   </section>
 
   <section id="skills" class="reveal">
     <div class="section-head">
-      <h2>Technical skills</h2>
-      <span class="tag">stack</span>
+      <h2>Technical Skills</h2>
+      <span class="tag">Core Stack</span>
     </div>
 
     <div style="margin-bottom: 18px;">
-      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Cloud &amp; data engineering</h3>
+      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Cloud &amp; Data Engineering</h3>
       <div class="chip-row">
         <span class="chip">Microsoft Azure</span>
         <span class="chip">Azure Data Factory</span>
@@ -318,7 +367,7 @@
     </div>
 
     <div style="margin-bottom: 18px;">
-      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Programming &amp; processing</h3>
+      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Programming &amp; Processing</h3>
       <div class="chip-row">
         <span class="chip">Python</span>
         <span class="chip">SQL</span>
@@ -340,94 +389,101 @@
     <div style="margin-bottom: 18px;">
       <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Generative AI</h3>
       <div class="chip-row">
-        <span class="chip chip-ai">RAG</span>
+        <span class="chip chip-ai">Retrieval-Augmented Generation (RAG)</span>
         <span class="chip chip-ai">OpenAI API</span>
         <span class="chip chip-ai">LlamaIndex</span>
-        <span class="chip chip-ai">LangChain</span>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 18px;">
+      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Analytics &amp; Governance</h3>
+      <div class="chip-row">
+        <span class="chip">Power BI</span>
+        <span class="chip">Microsoft Entra ID (Azure AD)</span>
+        <span class="chip">Role-Based Access Control (RBAC)</span>
+        <span class="chip">Data Governance</span>
       </div>
     </div>
 
     <div>
-      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Analytics &amp; governance</h3>
+      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Methodologies</h3>
       <div class="chip-row">
-        <span class="chip">Power BI</span>
-        <span class="chip">Microsoft Entra ID</span>
-        <span class="chip">RBAC</span>
-        <span class="chip">Data Governance</span>
+        <span class="chip">Agile</span>
+        <span class="chip">Scrum</span>
       </div>
     </div>
   </section>
 
-  <section id="experience" class="reveal">
-    <div class="section-head">
-      <h2>Professional experience</h2>
-      <span class="tag">4 roles</span>
+  <section id="experience">
+    <div class="section-head reveal">
+      <h2>Professional Experience</h2>
+      <span class="tag">4 Roles</span>
     </div>
 
     <!-- Role 1 -->
-    <div class="job">
+    <div class="job reveal">
       <div class="job-head">
-        <h3>Senior Associate — Azure Data Engineer</h3>
-        <span class="job-dates">Dec 2024 – Present</span>
+        <h3>Senior Associate – Azure Data Engineer</h3>
+        <span class="job-dates">December 2024 – Present</span>
       </div>
-      <div class="job-sub">Publicis Sapient, Gurgaon, India · Client: Shell</div>
+      <div class="job-sub">Publicis Sapient | Gurgaon, India · Client: Shell</div>
       <ul>
         <li>Designed enterprise-scale Azure data solutions using Azure Data Factory, Azure Databricks, Azure Synapse Analytics, Azure SQL, and Unity Catalog.</li>
-        <li>Migrated <span class="metric">20+ TB</span> of enterprise data from Azure Synapse Dedicated SQL Pools to upgraded v2 architecture with <span class="metric">100%</span> migration accuracy.</li>
-        <li>Built incremental sync pipelines with Azure Data Factory and Databricks, reaching <span class="metric">100%</span> reconciliation accuracy between source and target.</li>
-        <li>Created a reusable Unity Catalog cloning framework, migrating <span class="metric">40+ TB</span> between environments in under <span class="metric">4 hours</span>.</li>
-        <li>Built an RBAC framework on Microsoft Entra ID to automate group creation, role management, and governed data access.</li>
-        <li>Implemented Unity Catalog for centralized governance, security, access control, and data lineage.</li>
-        <li>Developed scalable PySpark transformation frameworks; owned validation, reconciliation, and monitoring for production pipelines.</li>
+        <li>Migrated <span class="metric">20+ TB</span> of data from Azure Synapse Dedicated SQL Pools to upgraded v2 architecture with <span class="metric">100%</span> migration accuracy.</li>
+        <li>Implemented incremental synchronization pipelines using Azure Data Factory and Databricks with <span class="metric">100%</span> reconciliation accuracy.</li>
+        <li>Created a reusable Unity Catalog cloning framework, enabling migration of <span class="metric">40+ TB</span> data between environments within <span class="metric">4 hours</span>.</li>
+        <li>Developed an RBAC framework on Microsoft Entra ID to automate group creation, role management, and governed data access.</li>
+        <li>Implemented Unity Catalog for centralized data governance, security, access control, and data lineage management.</li>
+        <li>Developed scalable PySpark transformation frameworks for analytical workloads.</li>
+        <li>Performed validation, reconciliation, monitoring, and troubleshooting for production data pipelines.</li>
       </ul>
       <div class="chip-row">
-        <span class="chip">Azure Data Factory</span><span class="chip">Databricks</span><span class="chip">Synapse</span><span class="chip">Azure SQL</span><span class="chip">Unity Catalog</span><span class="chip">PySpark</span><span class="chip">Key Vault</span><span class="chip">Entra ID</span>
+        <span class="chip">Azure Data Factory</span><span class="chip">Azure Databricks</span><span class="chip">Azure Synapse</span><span class="chip">Azure SQL</span><span class="chip">Unity Catalog</span><span class="chip">PySpark</span><span class="chip">Key Vault</span><span class="chip">Entra ID</span>
       </div>
     </div>
 
     <!-- Role 2 -->
-    <div class="job">
+    <div class="job reveal">
       <div class="job-head">
         <h3>Azure Data Engineer</h3>
-        <span class="job-dates">May 2022 – Dec 2024</span>
+        <span class="job-dates">May 2022 – December 2024</span>
       </div>
       <div class="job-sub">Welspun Transformation Services Ltd.</div>
 
       <div class="subproject">
-        <h4>Material Price Analysis</h4>
+        <h4>Project: Material Price Analysis</h4>
         <ul>
-          <li>Built end-to-end ETL/ELT pipelines integrating SAP systems, APIs, and multiple enterprise sources.</li>
-          <li>Built scalable ingestion pipelines using Azure Data Factory and ADLS; PySpark transformation workflows in Databricks.</li>
-          <li>Delivered curated datasets for Power BI dashboards covering material pricing and supplier performance.</li>
-          <li>Authored HLD/LLD technical design documents and monitored production pipelines.</li>
+          <li>Developed ETL/ELT pipelines integrating data from SAP systems, APIs, and enterprise sources.</li>
+          <li>Built ingestion pipelines with ADF and ADLS Gen2; PySpark transformation workflows in Databricks.</li>
+          <li>Delivered curated datasets for Power BI dashboards supporting material price analysis and supplier performance.</li>
+          <li>Prepared HLD and LLD design documents and monitored production pipelines.</li>
         </ul>
         <div class="chip-row">
-          <span class="chip">Azure Data Factory</span><span class="chip">Databricks</span><span class="chip">ADLS</span><span class="chip">Azure SQL</span><span class="chip">PySpark</span><span class="chip">Power BI</span><span class="chip">SAP</span>
+          <span class="chip">Azure Data Factory</span><span class="chip">Azure Databricks</span><span class="chip">ADLS</span><span class="chip">PySpark</span><span class="chip">Power BI</span><span class="chip">SAP</span>
         </div>
       </div>
 
       <div class="subproject">
-        <h4>Wel-Hire — AI-Based Interview Platform</h4>
+        <h4>Project: Wel-Hire – AI Based Interview Platform</h4>
         <span class="role-tag">Generative AI Developer (RAG Architecture)</span>
         <ul>
-          <li>Designed a RAG-based AI interview platform over enterprise knowledge sources.</li>
-          <li>Integrated OpenAI APIs with LlamaIndex for context-aware responses grounded in technical docs and job descriptions.</li>
-          <li>Built backend services in Python with MongoDB for document storage and retrieval.</li>
-          <li>Enabled <span class="metric">5,000+</span> AI-assisted interviews, supporting closure of <span class="metric">100+</span> hiring positions in 3 months.</li>
+          <li>Designed and developed a RAG-based AI interview platform using enterprise knowledge sources.</li>
+          <li>Integrated OpenAI APIs with LlamaIndex for context-aware responses using technical docs and job descriptions.</li>
+          <li>Developed backend services using Python with MongoDB for document storage and retrieval.</li>
+          <li>Enabled platform to conduct <span class="metric">5,000+</span> AI-assisted interviews and supported closure of <span class="metric">100+</span> hiring positions in 3 months.</li>
         </ul>
         <div class="chip-row">
-          <span class="chip chip-ai">Python</span><span class="chip chip-ai">OpenAI API</span><span class="chip chip-ai">LlamaIndex</span><span class="chip chip-ai">LangChain</span><span class="chip chip-ai">MongoDB</span><span class="chip chip-ai">RAG</span>
+          <span class="chip chip-ai">Python</span><span class="chip chip-ai">OpenAI API</span><span class="chip chip-ai">LlamaIndex</span><span class="chip chip-ai">MongoDB</span><span class="chip chip-ai">RAG</span>
         </div>
       </div>
 
       <div class="subproject">
-        <h4>Microsoft Fabric Implementation</h4>
+        <h4>Project: Microsoft Fabric Implementation</h4>
         <span class="role-tag">Client: Sintex</span>
         <ul>
           <li>Led Fabric implementation from PoC through platform evaluation and infrastructure setup.</li>
-          <li>Configured Lakehouse, Fabric Data Factory, workspaces, and data integration.</li>
-          <li>Built ETL/ELT pipelines from SAP HANA and third-party systems into Fabric Lakehouse; SQL transformations for Finance and Manufacturing analytics.</li>
-          <li>Designed a centralized platform for Power BI reporting, with validation and governance built in.</li>
+          <li>Configured Fabric Lakehouse, Fabric Data Factory, workspaces, and data integration.</li>
+          <li>Built ETL pipelines ingesting data from SAP HANA into Fabric Lakehouse; developed SQL transformations for Finance &amp; Manufacturing analytics.</li>
         </ul>
         <div class="chip-row">
           <span class="chip">Microsoft Fabric</span><span class="chip">Fabric Data Factory</span><span class="chip">Lakehouse</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">SAP HANA</span>
@@ -436,17 +492,17 @@
     </div>
 
     <!-- Role 3 -->
-    <div class="job">
+    <div class="job reveal">
       <div class="job-head">
         <h3>Azure Data Engineer</h3>
-        <span class="job-dates">Apr 2021 – Apr 2022</span>
+        <span class="job-dates">April 2021 – April 2022</span>
       </div>
       <div class="job-sub">Gokul Agro Resources Ltd.</div>
       <ul>
-        <li>Built Azure-based data integration solutions for manufacturing operations.</li>
-        <li>Developed ETL workflows in Python and SQL for production, maintenance, and inventory reporting.</li>
+        <li>Developed Azure-based data integration solutions for Manufacturing operations.</li>
+        <li>Built ETL workflows using Python and SQL for production, maintenance, and inventory reporting.</li>
         <li>Implemented data warehouse solutions supporting operational analytics.</li>
-        <li>Built Power BI dashboards for business performance monitoring, with validation and reconciliation to ensure data quality.</li>
+        <li>Developed Power BI dashboards for operational performance monitoring.</li>
       </ul>
       <div class="chip-row">
         <span class="chip">Azure</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Power BI</span>
@@ -454,53 +510,40 @@
     </div>
 
     <!-- Role 4 -->
-    <div class="job">
+    <div class="job reveal">
       <div class="job-head">
         <h3>Graduate Engineer</h3>
-        <span class="job-dates">Apr 2020 – Apr 2021</span>
+        <span class="job-dates">April 2020 – April 2021</span>
       </div>
       <div class="job-sub">Nilkanth Concast Pvt. Ltd.</div>
       <ul>
         <li>Performed root cause analysis for production issues and implemented corrective actions.</li>
-        <li>Supported preventive and corrective maintenance activities.</li>
-        <li>Managed engineering material procurement and collaborated with production teams on operational efficiency.</li>
+        <li>Supported preventive and corrective maintenance activities and engineering material procurement.</li>
       </ul>
     </div>
   </section>
 
   <section id="credentials" class="reveal">
     <div class="section-head">
-      <h2>Certifications &amp; education</h2>
-      <span class="tag">record</span>
+      <h2>Certifications &amp; Education</h2>
+      <span class="tag">Credentials</span>
     </div>
     <div class="grid-2">
       <div>
         <h3 style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 8px;">Certification</h3>
-        <p style="margin:0; font-weight:600;">Databricks Certified Data Engineer Associate</p>
+        <p style="margin:0; font-weight:600; color:var(--cyan);">Databricks Certified Data Engineer Associate</p>
       </div>
       <div>
         <h3 style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 8px;">Education</h3>
-        <p style="margin:0; font-weight:600;">B.Tech, Mechanical Engineering</p>
+        <p style="margin:0; font-weight:600;">Bachelor of Technology (Mechanical Engineering)</p>
         <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 3px;">Gujarat Technological University · 2019</div>
       </div>
     </div>
   </section>
 
-  <section id="languages" class="reveal">
-    <div class="section-head">
-      <h2>Languages</h2>
-      <span class="tag">3</span>
-    </div>
-    <div class="chip-row">
-      <span class="chip">English</span>
-      <span class="chip">Hindi</span>
-      <span class="chip">German</span>
-    </div>
-  </section>
-
   <footer>
     <div>© 2026 Ravi Thakur</div>
-    <div><a href="projects.html" style="color:var(--cyan);">Explore All Projects →</a></div>
+    <div><a href="projects.html" style="color:var(--cyan); font-weight: 500;">Explore Projects Portfolio →</a></div>
   </footer>
 
 </div>
