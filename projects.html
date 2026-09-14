@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ravi Thakur — Senior Azure Data Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Ravi Thakur — Project Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0B0F17;
@@ -14,541 +12,141 @@
     --panel-border: rgba(255, 255, 255, 0.08);
     --text: #F1F5F9;
     --text-muted: #94A3B8;
-    
     --cyan: #00F2FE;
     --purple: #9D4EDD;
     --green: #10B981;
     --amber: #F59E0B;
-    --grid-line: rgba(255, 255, 255, 0.025);
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
   body {
     margin: 0;
-    background: 
-      radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 85% 65%, rgba(157, 78, 221, 0.08) 0%, transparent 40%),
-      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/40px 40px,
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/40px 40px,
-      var(--bg);
+    background: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
+    padding: 40px 20px;
     line-height: 1.6;
   }
 
-  a { color: inherit; text-decoration: none; }
-
-  .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px; }
-  code, .mono { font-family: 'IBM Plex Mono', monospace; }
-
-  /* Navbar */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 0;
-    border-bottom: 1px solid var(--panel-border);
-    position: sticky;
-    top: 0;
-    background: rgba(11, 15, 23, 0.9);
-    backdrop-filter: blur(8px);
-    z-index: 100;
-  }
-
-  .nav-brand {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500;
+  .container { max-width: 900px; margin: 0 auto; }
+  
+  nav { margin-bottom: 40px; }
+  nav a {
     color: var(--cyan);
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    text-decoration: none;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-  }
-
-  .nav-links a:hover { color: var(--cyan); }
-
-  .nav-btn {
-    padding: 6px 14px;
-    background: rgba(0, 242, 254, 0.1);
-    color: var(--cyan) !important;
-    border: 1px solid rgba(0, 242, 254, 0.3);
-    border-radius: 6px;
-    transition: all 0.3s ease;
-  }
-
-  .nav-btn:hover {
-    background: var(--cyan);
-    color: var(--bg) !important;
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-    transform: translateY(-2px);
-  }
-
-  /* Hero Section */
-  .hero { padding: 56px 0 40px; }
-
-  .hero h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    line-height: 1.05;
-    background: linear-gradient(135deg, #FFFFFF 30%, var(--cyan) 70%, var(--purple) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 0;
-  }
-
-  .hero .role {
-    margin-top: 12px;
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
-    color: var(--cyan);
-    font-weight: 500;
-  }
-
-  .meta-row {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
     font-size: 14px;
-    color: var(--text-muted);
-  }
-
-  .meta-row a:hover { color: var(--cyan); }
-
-  /* Sections */
-  section { padding: 44px 0; border-top: 1px solid var(--panel-border); }
-
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 24px;
-  }
-
-  .section-head h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.6rem;
-    margin: 0;
-  }
-
-  .section-head .tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-
-  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-
-  .chip {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12.5px;
-    padding: 6px 12px;
-    background: var(--panel);
-    border: 1px solid var(--panel-border);
-    border-radius: 6px;
-    color: var(--text);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .chip:hover {
-    transform: translateY(-3px);
-    border-color: var(--cyan);
-    color: var(--cyan);
-    box-shadow: 0 4px 14px rgba(0, 242, 254, 0.25);
-  }
-
-  .chip-ai:hover {
-    border-color: var(--purple);
-    color: var(--purple);
-    box-shadow: 0 4px 14px rgba(157, 78, 221, 0.3);
-  }
-
-  /* Experience Section */
-  .job { margin-bottom: 40px; }
-  .job:last-child { margin-bottom: 0; }
-
-  .job-head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
+    display: inline-flex;
+    align-items: center;
     gap: 8px;
-    margin-bottom: 4px;
+    transition: transform 0.2s ease;
   }
+  nav a:hover { transform: translateX(-4px); }
 
-  .job-head h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.25rem;
-    color: #FFF;
-    margin: 0;
-  }
+  h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; margin-bottom: 8px; }
+  .subtitle { color: var(--text-muted); margin-bottom: 40px; }
 
-  .job-dates {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: var(--cyan);
-  }
-
-  .job-sub {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    margin-bottom: 12px;
-  }
-
-  .job ul { margin: 0 0 16px 0; padding-left: 20px; }
-  .job li { margin-bottom: 8px; color: var(--text-muted); }
-
-  .metric { color: var(--amber); font-weight: 600; }
-
-  .subproject {
-    margin: 18px 0;
-    padding: 20px 24px;
+  .project-card {
     background: var(--panel);
     border: 1px solid var(--panel-border);
-    border-left: 3px solid var(--cyan);
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .subproject:hover {
-    transform: translateX(6px);
-    border-left-color: var(--purple);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.3);
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 4px; height: 100%;
   }
 
-  .subproject h4 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.1rem;
-    margin: 0 0 4px 0;
+  .card-synapse::before { background: linear-gradient(to bottom, var(--cyan), var(--purple)); }
+  .card-ai::before { background: linear-gradient(to bottom, var(--purple), var(--amber)); }
+  .card-fabric::before { background: linear-gradient(to bottom, var(--green), var(--cyan)); }
+  .card-mpa::before { background: linear-gradient(to bottom, var(--amber), var(--green)); }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 242, 254, 0.3);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
   }
 
-  .role-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--purple);
-    display: block;
-    margin-bottom: 8px;
-  }
+  .project-title { font-size: 1.35rem; font-weight: 700; font-family: 'Space Grotesk', sans-serif; margin-bottom: 4px; }
+  .project-client { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+  .project-tech { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--cyan); margin-bottom: 16px; display: block; }
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  ul { margin: 0; padding-left: 20px; color: var(--text-muted); }
+  li { margin-bottom: 6px; }
 
-  /* Scroll Reveal Animation */
-  .reveal {
+  .fade-up {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(30px);
+    animation: fadeInUp 0.7s ease forwards;
   }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
 
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  footer {
-    padding: 40px 0 60px;
-    border-top: 1px solid var(--panel-border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--text-muted);
-    font-size: 14px;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  footer a:hover { color: var(--cyan); }
-
-  @media (max-width: 640px) {
-    .grid-2 { grid-template-columns: 1fr; }
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-
-  <nav class="navbar">
-    <span class="nav-brand">ravi.thakur // azure_data_eng</span>
-    <div class="nav-links">
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#credentials">Education</a>
-      <a href="projects.html" class="nav-btn">View Projects →</a>
-    </div>
+<div class="container">
+  <nav>
+    <a href="index.html">← Back to Main Resume</a>
   </nav>
 
-  <header class="hero reveal">
-    <h1>Ravi Thakur</h1>
-    <div class="role">Senior Azure Data Engineer</div>
-    <div class="meta-row">
-      <span>📍 Gurgaon, India</span>
-      <a href="tel:+917600880477">📞 +91 7600880477</a>
-      <a href="mailto:ravithakur.rt91@gmail.com">✉️ ravithakur.rt91@gmail.com</a>
-      <a href="https://linkedin.com/in/ravi-thakur-0193b7187" target="_blank" rel="noopener">🔗 LinkedIn</a>
-    </div>
-  </header>
+  <h1 class="fade-up">Featured Engineering Projects</h1>
+  <p class="subtitle fade-up delay-1">Detailed technical implementations of data pipeline architectures, Generative AI models, and enterprise migrations.</p>
 
-  <section class="summary reveal" id="summary">
-    <div class="section-head">
-      <h2>Summary</h2>
-      <span class="tag">6+ yrs total / 5 yrs Azure</span>
-    </div>
-    <p>
-      Working as Senior Associate in the Publicis Sapient Gurgaon office with total <span class="metric">6+ years</span> of experience &amp; <span class="metric">5 years</span> in Azure Data Engineering. Core experience lies in Azure data, SQL, Data pipelines, Python, PySpark, and Azure Databricks.
-    </p>
-    <p>
-      Experienced in Azure ETL services, with ongoing Azure Databricks and SQL training. Worked with clients across Accounting &amp; Finance, Banking, Supply Chain Management, and Manufacturing Production. Hands-on experience building RAG models for AI-based interview tools.
-    </p>
-  </section>
+  <div class="project-card card-synapse fade-up delay-1">
+    <div class="project-title">Enterprise Synapse to v2 Migration &amp; Governance</div>
+    <div class="project-client">Publicis Sapient | Client: Shell</div>
+    <span class="project-tech">Azure Data Factory · Databricks · Synapse · Unity Catalog · PySpark · Entra ID</span>
+    <ul>
+      <li>Migrated 20+ TB of enterprise data from Synapse Dedicated SQL Pools to v2 architecture with 100% accuracy.</li>
+      <li>Engineered an automated Unity Catalog cloning framework that migrated 40+ TB between environments in under 4 hours.</li>
+      <li>Created an RBAC access framework using Microsoft Entra ID to manage roles and secure data views automatically.</li>
+    </ul>
+  </div>
 
-  <section id="skills" class="reveal">
-    <div class="section-head">
-      <h2>Technical Skills</h2>
-      <span class="tag">Core Stack</span>
-    </div>
+  <div class="project-card card-ai fade-up delay-2">
+    <div class="project-title">Wel-Hire — RAG-Based AI Interview Platform</div>
+    <div class="project-client">Welspun Transformation Services Ltd.</div>
+    <span class="project-tech">Python · OpenAI API · LlamaIndex · LangChain · MongoDB · RAG</span>
+    <ul>
+      <li>Built an enterprise RAG system conducting automated candidate interviews using technical docs and job descriptions.</li>
+      <li>Integrated MongoDB backend for dynamic document retrieval and evaluation workflows.</li>
+      <li>Executed 5,000+ AI interviews, assisting in 100+ position closures in 3 months.</li>
+    </ul>
+  </div>
 
-    <div style="margin-bottom: 18px;">
-      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Cloud &amp; Data Engineering</h3>
-      <div class="chip-row">
-        <span class="chip">Microsoft Azure</span>
-        <span class="chip">Azure Data Factory</span>
-        <span class="chip">Azure Databricks</span>
-        <span class="chip">Azure Synapse Analytics</span>
-        <span class="chip">Microsoft Fabric</span>
-        <span class="chip">ADLS Gen2</span>
-        <span class="chip">Unity Catalog</span>
-        <span class="chip">Azure Key Vault</span>
-      </div>
-    </div>
+  <div class="project-card card-fabric fade-up delay-3">
+    <div class="project-title">Microsoft Fabric Analytics Implementation</div>
+    <div class="project-client">Welspun Transformation Services Ltd. | Client: Sintex</div>
+    <span class="project-tech">Microsoft Fabric · Fabric Data Factory · Lakehouse · SQL · Power BI · SAP HANA</span>
+    <ul>
+      <li>Led implementation from PoC to production across Lakehouse setup and workspace configuration.</li>
+      <li>Ingested data from SAP HANA into Lakehouse, developing SQL transformation pipelines for Finance and Manufacturing BI.</li>
+    </ul>
+  </div>
 
-    <div style="margin-bottom: 18px;">
-      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Programming &amp; Processing</h3>
-      <div class="chip-row">
-        <span class="chip">Python</span>
-        <span class="chip">SQL</span>
-        <span class="chip">PySpark</span>
-        <span class="chip">Spark SQL</span>
-      </div>
-    </div>
-
-    <div style="margin-bottom: 18px;">
-      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Databases</h3>
-      <div class="chip-row">
-        <span class="chip">Azure SQL Database</span>
-        <span class="chip">SQL Server</span>
-        <span class="chip">MongoDB</span>
-        <span class="chip">SAP HANA</span>
-      </div>
-    </div>
-
-    <div style="margin-bottom: 18px;">
-      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Generative AI</h3>
-      <div class="chip-row">
-        <span class="chip chip-ai">Retrieval-Augmented Generation (RAG)</span>
-        <span class="chip chip-ai">OpenAI API</span>
-        <span class="chip chip-ai">LlamaIndex</span>
-      </div>
-    </div>
-
-    <div style="margin-bottom: 18px;">
-      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Analytics &amp; Governance</h3>
-      <div class="chip-row">
-        <span class="chip">Power BI</span>
-        <span class="chip">Microsoft Entra ID (Azure AD)</span>
-        <span class="chip">Role-Based Access Control (RBAC)</span>
-        <span class="chip">Data Governance</span>
-      </div>
-    </div>
-
-    <div>
-      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Methodologies</h3>
-      <div class="chip-row">
-        <span class="chip">Agile</span>
-        <span class="chip">Scrum</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience" class="reveal">
-    <div class="section-head">
-      <h2>Professional Experience</h2>
-      <span class="tag">Full Timeline</span>
-    </div>
-
-    <!-- Role 1 -->
-    <div class="job">
-      <div class="job-head">
-        <h3>Senior Associate – Azure Data Engineer</h3>
-        <span class="job-dates">December 2024 – Present</span>
-      </div>
-      <div class="job-sub">Publicis Sapient | Gurgaon, India · Client: Shell</div>
-      <ul>
-        <li>Designed and developed enterprise-scale Azure data solutions using Azure Data Factory, Azure Databricks, Azure Synapse Analytics, Azure SQL, and Unity Catalog.</li>
-        <li>Successfully migrated <span class="metric">20+ TB</span> of enterprise data from Azure Synapse Dedicated SQL Pools (ASDW) to upgraded v2 architecture, achieving <span class="metric">100%</span> migration accuracy while maintaining synchronization with existing production systems.</li>
-        <li>Designed and implemented incremental data synchronization pipelines using Azure Data Factory and Azure Databricks, achieving <span class="metric">100%</span> reconciliation accuracy between source and target platforms.</li>
-        <li>Created a reusable Unity Catalog cloning framework to automate environment replication, enabling migration of <span class="metric">40+ TB</span> data between Unity Catalog environments within <span class="metric">4 hours</span>, significantly reducing manual effort and deployment time.</li>
-        <li>Developed a role-based access control framework using Microsoft Entra ID (Azure Active Directory) to automate group creation, role management, and secure data access through governed role-based views.</li>
-        <li>Implemented Unity Catalog for centralized data governance, security, access control, and data lineage management.</li>
-        <li>Developed scalable PySpark transformation frameworks for large-scale data processing and analytical workloads.</li>
-        <li>Performed data validation, reconciliation, monitoring, and troubleshooting to ensure reliable production data pipelines.</li>
-        <li>Collaborated with business stakeholders to gather requirements and deliver scalable cloud data solutions.</li>
-      </ul>
-      <div class="chip-row">
-        <span class="chip">Azure Data Factory</span><span class="chip">Azure Databricks</span><span class="chip">Azure Synapse Analytics</span><span class="chip">Azure SQL</span><span class="chip">Unity Catalog</span><span class="chip">PySpark</span><span class="chip">Python</span><span class="chip">Azure Key Vault</span><span class="chip">Microsoft Entra ID</span>
-      </div>
-    </div>
-
-    <!-- Role 2 -->
-    <div class="job">
-      <div class="job-head">
-        <h3>Azure Data Engineer</h3>
-        <span class="job-dates">May 2022 – December 2024</span>
-      </div>
-      <div class="job-sub">Welspun Transformation Services Ltd.</div>
-
-      <!-- Welspun Project 1 -->
-      <div class="subproject">
-        <h4>Project: Material Price Analysis</h4>
-        <ul>
-          <li>Developed end-to-end ETL/ELT pipelines integrating data from SAP systems, APIs, and multiple enterprise sources.</li>
-          <li>Built scalable ingestion pipelines using Azure Data Factory and Azure Data Lake Storage.</li>
-          <li>Developed PySpark-based transformation workflows in Azure Databricks for enterprise data processing.</li>
-          <li>Delivered curated datasets for Power BI dashboards supporting material price analysis, supplier performance, and business insights.</li>
-          <li>Prepared technical design documents including High-Level Design and Low-Level Design.</li>
-          <li>Collaborated with business teams to understand requirements and deliver reliable data solutions.</li>
-          <li>Monitored production pipelines and resolved data processing issues.</li>
-        </ul>
-        <div class="chip-row">
-          <span class="chip">Azure Data Factory</span><span class="chip">Azure Databricks</span><span class="chip">Azure Data Lake Storage</span><span class="chip">Azure SQL</span><span class="chip">PySpark</span><span class="chip">Power BI</span><span class="chip">SAP</span>
-        </div>
-      </div>
-
-      <!-- Welspun Project 2 -->
-      <div class="subproject">
-        <h4>Project: Wel-Hire – AI Based Interview Platform</h4>
-        <span class="role-tag">Generative AI Developer (RAG Architecture)</span>
-        <ul>
-          <li>Designed and developed a Retrieval-Augmented Generation (RAG) based AI interview platform using enterprise knowledge sources.</li>
-          <li>Integrated OpenAI APIs with LlamaIndex to enable context-aware AI responses using technical documentation and job descriptions.</li>
-          <li>Developed backend services using Python and integrated MongoDB for document storage and retrieval.</li>
-          <li>Built an AI-driven candidate evaluation workflow to improve recruitment efficiency.</li>
-          <li>Enabled the platform to conduct <span class="metric">5,000+</span> AI-assisted interviews and supported closure of <span class="metric">100+</span> hiring positions within 3 months.</li>
-          <li>Improved interview consistency and reduced manual screening effort through AI automation.</li>
-        </ul>
-        <div class="chip-row">
-          <span class="chip chip-ai">Python</span><span class="chip chip-ai">OpenAI API</span><span class="chip chip-ai">LlamaIndex</span><span class="chip chip-ai">LangChain</span><span class="chip chip-ai">MongoDB</span><span class="chip chip-ai">Generative AI</span><span class="chip chip-ai">RAG</span>
-        </div>
-      </div>
-
-      <!-- Welspun Project 3 -->
-      <div class="subproject">
-        <h4>Project: Microsoft Fabric Implementation</h4>
-        <span class="role-tag">Client: Sintex</span>
-        <ul>
-          <li>Led the implementation of Microsoft Fabric, including Proof of Concept (PoC), platform evaluation, and infrastructure setup.</li>
-          <li>Designed and configured Microsoft Fabric components including Lakehouse, Fabric Data Factory, workspace configuration, and data integration setup.</li>
-          <li>Built ETL/ELT pipelines to ingest data from SAP HANA and multiple third-party systems into Microsoft Fabric Lakehouse.</li>
-          <li>Developed SQL-based transformation workflows to prepare curated datasets for Finance and Manufacturing analytics.</li>
-          <li>Designed a centralized data platform supporting Power BI reporting and business intelligence.</li>
-          <li>Implemented data validation, monitoring, and governance processes to ensure reliable reporting.</li>
-        </ul>
-        <div class="chip-row">
-          <span class="chip">Microsoft Fabric</span><span class="chip">Fabric Data Factory</span><span class="chip">Fabric Lakehouse</span><span class="chip">SQL</span><span class="chip">Power BI</span><span class="chip">SAP HANA</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Role 3 -->
-    <div class="job">
-      <div class="job-head">
-        <h3>Azure Data Engineer</h3>
-        <span class="job-dates">April 2021 – April 2022</span>
-      </div>
-      <div class="job-sub">Gokul Agro Resources Ltd.</div>
-      <ul>
-        <li>Developed Azure-based data integration solutions for Manufacturing operations.</li>
-        <li>Built ETL workflows using Python and SQL for production, maintenance, and inventory reporting.</li>
-        <li>Implemented data warehouse solutions to support operational analytics.</li>
-        <li>Developed Power BI dashboards for business performance monitoring.</li>
-        <li>Worked with stakeholders to gather requirements and deliver reporting solutions.</li>
-        <li>Ensured data quality through validation and reconciliation processes.</li>
-      </ul>
-      <div class="chip-row">
-        <span class="chip">Azure</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Power BI</span>
-      </div>
-    </div>
-
-    <!-- Role 4 -->
-    <div class="job">
-      <div class="job-head">
-        <h3>Graduate Engineer</h3>
-        <span class="job-dates">April 2020 – April 2021</span>
-      </div>
-      <div class="job-sub">Nilkanth Concast Pvt. Ltd.</div>
-      <ul>
-        <li>Performed root cause analysis for production issues and implemented corrective actions.</li>
-        <li>Supported preventive and corrective maintenance activities.</li>
-        <li>Managed engineering material procurement activities.</li>
-        <li>Collaborated with production teams to improve operational efficiency.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="credentials" class="reveal">
-    <div class="section-head">
-      <h2>Certifications &amp; Education</h2>
-      <span class="tag">Qualifications</span>
-    </div>
-    <div class="grid-2">
-      <div>
-        <h3 style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 8px;">Certifications</h3>
-        <p style="margin:0; font-weight:600; color:var(--cyan);">Databricks Certified Data Engineer Associate</p>
-      </div>
-      <div>
-        <h3 style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 8px;">Education</h3>
-        <p style="margin:0; font-weight:600;">Bachelor of Technology (Mechanical Engineering)</p>
-        <div style="color: var(--text-muted); font-size: 0.9rem; margin-top: 3px;">Gujarat Technological University · 2019</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="languages" class="reveal">
-    <div class="section-head">
-      <h2>Languages</h2>
-      <span class="tag">3</span>
-    </div>
-    <div class="chip-row">
-      <span class="chip">English</span>
-      <span class="chip">Hindi</span>
-      <span class="chip">German</span>
-    </div>
-  </section>
-
-  <footer>
-    <div>© 2026 Ravi Thakur</div>
-    <div><a href="projects.html" style="color:var(--cyan);">Explore Projects Portfolio →</a></div>
-  </footer>
-
+  <div class="project-card card-mpa fade-up delay-3">
+    <div class="project-title">Material Price Analysis Pipeline</div>
+    <div class="project-client">Welspun Transformation Services Ltd.</div>
+    <span class="project-tech">Azure Data Factory · Databricks · ADLS Gen2 · Azure SQL · PySpark · Power BI · SAP</span>
+    <ul>
+      <li>Built end-to-end ingestion and PySpark processing pipelines for SAP systems and external APIs.</li>
+      <li>Curated production data for Power BI dashboards analyzing material costs and vendor metrics.</li>
+    </ul>
+  </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-  });
-</script>
 </body>
 </html>
