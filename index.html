@@ -10,34 +10,37 @@
 <style>
   :root {
     --bg: #070A0F;
-    --panel: #0F172A;
+    --panel: rgba(15, 23, 42, 0.75);
+    --panel-hover: rgba(26, 38, 66, 0.85);
     --panel-border: rgba(255, 255, 255, 0.08);
+    --border-glow: rgba(0, 242, 254, 0.35);
     --text: #F8FAFC;
     --text-muted: #94A3B8;
     --cyan: #00F2FE;
     --cyan-glow: rgba(0, 242, 254, 0.15);
     --purple: #A855F7;
     --amber: #F59E0B;
-    --grid-line: rgba(255, 255, 255, 0.03);
+    --grid-line: rgba(255, 255, 255, 0.025);
   }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
 
-  /* Flowing Animated Background */
+  /* Flowing Ambient Background */
   body {
     margin: 0;
     background: 
-      radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.15) 0%, transparent 45%),
-      radial-gradient(circle at 90% 90%, rgba(168, 85, 247, 0.15) 0%, transparent 45%),
+      radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.12) 0%, transparent 45%),
+      radial-gradient(circle at 90% 90%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
       linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/32px 32px,
       linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/32px 32px,
       var(--bg);
-    background-size: 150% 150%;
-    animation: flowBg 12s ease infinite alternate;
+    background-size: 160% 160%;
+    animation: flowBg 14s ease infinite alternate;
     color: var(--text);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
 
   @keyframes flowBg {
@@ -47,41 +50,42 @@
   }
 
   a { color: inherit; text-decoration: none; }
-  .wrap { max-width: 940px; margin: 0 auto; padding: 0 28px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
-  /* Clean Seamless Header (Black Strip Removed) */
+  /* Glassmorphic Fixed Header */
   .navbar {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 18px 0;
+    padding: 16px 0;
     border-bottom: 1px solid var(--panel-border);
     position: sticky;
     top: 0;
-    background: rgba(7, 10, 15, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(7, 10, 15, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     z-index: 100;
   }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 24px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
   }
 
   .nav-links a {
     color: var(--text-muted);
-    transition: color 0.2s ease;
+    transition: color 0.25s ease;
   }
 
   .nav-links a:hover {
     color: var(--cyan);
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
   }
 
-  /* Button Base + Click Effect Wave */
+  /* Ripple & Glow Button Styles */
   .btn-ripple {
     position: relative;
     overflow: hidden;
@@ -114,22 +118,22 @@
     padding: 8px 18px;
     background: rgba(0, 242, 254, 0.08);
     color: var(--cyan) !important;
-    border: 1px solid rgba(0, 242, 254, 0.3);
+    border: 1px solid rgba(0, 242, 254, 0.35);
     border-radius: 8px;
     font-weight: 500;
-    transition: all 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .nav-btn:hover {
     background: var(--cyan);
     color: #070A0F !important;
-    box-shadow: 0 0 18px rgba(0, 242, 254, 0.35);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.45);
     transform: translateY(-1px);
   }
 
   /* Hero Section */
   .hero { 
-    padding: 40px 0 32px; 
+    padding: 48px 0 36px; 
   }
 
   .status-badge {
@@ -143,7 +147,8 @@
     border: 1px solid rgba(16, 185, 129, 0.25);
     padding: 6px 14px;
     border-radius: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+    backdrop-filter: blur(6px);
   }
 
   .pulse-dot {
@@ -151,7 +156,7 @@
     height: 7px;
     background: #10B981;
     border-radius: 50%;
-    box-shadow: 0 0 8px #10B981;
+    box-shadow: 0 0 10px #10B981;
     animation: pulse 2s infinite;
   }
 
@@ -161,7 +166,6 @@
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
   }
 
-  /* Dynamic Flowing Gradient Heading */
   .hero h1 {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: clamp(2.8rem, 5.5vw, 4.2rem);
@@ -185,6 +189,7 @@
     font-size: clamp(1.15rem, 2vw, 1.4rem);
     color: var(--cyan);
     font-weight: 600;
+    letter-spacing: -0.01em;
   }
 
   .meta-row {
@@ -196,9 +201,10 @@
     color: var(--text-muted);
   }
 
+  .meta-row a { transition: color 0.2s ease; }
   .meta-row a:hover { color: var(--cyan); }
 
-  /* Sections */
+  /* Sections & Cards */
   section { padding: 48px 0; border-top: 1px solid var(--panel-border); }
 
   .section-head {
@@ -229,14 +235,13 @@
     background: var(--panel);
     border: 1px solid var(--panel-border);
     padding: 28px;
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    perspective: 1000px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
   }
 
   .profile-img-container { flex-shrink: 0; }
 
-  /* Interactive Animated Profile Image */
   .profile-img {
     width: 130px;
     height: 130px;
@@ -256,22 +261,30 @@
   .summary-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 16px;
-    margin-top: 20px;
+    gap: 18px;
+    margin-top: 22px;
   }
 
   .summary-card {
     background: var(--panel);
     border: 1px solid var(--panel-border);
-    padding: 20px;
-    border-radius: 10px;
+    padding: 22px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .summary-card:hover {
+    border-color: rgba(0, 242, 254, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   }
 
   .summary-card-title {
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     color: var(--cyan);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .summary-card p {
@@ -280,6 +293,7 @@
     color: var(--text-muted);
   }
 
+  /* Interactive Chips */
   .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
 
   .chip {
@@ -290,13 +304,15 @@
     border: 1px solid var(--panel-border);
     border-radius: 8px;
     color: var(--text);
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
   }
 
   .chip:hover {
     border-color: var(--cyan);
     background: var(--cyan-glow);
     color: var(--cyan);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.2);
+    transform: translateY(-1px);
   }
 
   /* Experience Cards */
@@ -305,15 +321,16 @@
   .job-card {
     background: var(--panel);
     border: 1px solid var(--panel-border);
-    border-radius: 12px;
-    padding: 24px 28px;
+    border-radius: 14px;
+    padding: 26px 30px;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
   }
 
   .job-card:hover {
-    border-color: rgba(0, 242, 254, 0.4);
+    border-color: var(--border-glow);
     transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
   }
 
   .job-head {
@@ -327,7 +344,7 @@
 
   .job-head h3 {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: #FFF;
     margin: 0;
@@ -339,8 +356,9 @@
     color: var(--cyan);
   }
 
-  .job-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 14px; }
+  .job-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
 
+  /* Dropdown Styling */
   .dropdown {
     position: relative;
     display: inline-block;
@@ -356,6 +374,12 @@
     background: rgba(0, 242, 254, 0.08);
     border-radius: 6px;
     border: 1px dashed rgba(0, 242, 254, 0.4);
+    transition: all 0.2s ease;
+  }
+
+  .dropdown-btn:hover {
+    background: rgba(0, 242, 254, 0.15);
+    border-style: solid;
   }
 
   .dropdown-content {
@@ -387,27 +411,30 @@
 
   .dropdown:hover .dropdown-content { display: block; }
 
+  /* Project Link Buttons */
   .project-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
 
   .p-link-btn {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12.5px;
-    padding: 7px 14px;
+    padding: 8px 16px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--panel-border);
-    border-radius: 6px;
+    border-radius: 8px;
     color: var(--cyan);
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
   }
 
   .p-link-btn:hover {
-    background: rgba(0, 242, 254, 0.15);
+    background: rgba(0, 242, 254, 0.12);
     border-color: var(--cyan);
+    box-shadow: 0 0 14px rgba(0, 242, 254, 0.2);
+    transform: translateY(-1px);
   }
 
   .metric { color: var(--amber); font-weight: 600; }
 
-  /* Image Modal Lightbox */
+  /* Modal Lightbox */
   .modal {
     display: none;
     position: fixed;
@@ -415,8 +442,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(7, 10, 15, 0.95);
-    backdrop-filter: blur(8px);
+    background: rgba(7, 10, 15, 0.92);
+    backdrop-filter: blur(10px);
     z-index: 200;
     justify-content: center;
     align-items: center;
@@ -442,6 +469,7 @@
 
   @media (max-width: 640px) {
     .about-container { flex-direction: column; text-align: center; }
+    .nav-links { gap: 16px; font-size: 12px; }
   }
 </style>
 </head>
@@ -512,7 +540,7 @@
       <span class="tag">// core_stack</span>
     </div>
 
-    <div style="margin-bottom: 20px;">
+    <div style="margin-bottom: 22px;">
       <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 8px;">Cloud &amp; Data Platforms</h3>
       <div class="chip-row">
         <span class="chip">Microsoft Azure</span>
