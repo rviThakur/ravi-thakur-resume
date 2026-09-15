@@ -6,18 +6,19 @@
 <title>Ravi Thakur — Senior Azure Data Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0B0F17;
-    --panel: #131B26;
+    --bg: #070A0F;
+    --panel: #0F172A;
     --panel-border: rgba(255, 255, 255, 0.08);
-    --text: #F1F5F9;
+    --text: #F8FAFC;
     --text-muted: #94A3B8;
     --cyan: #00F2FE;
-    --purple: #9D4EDD;
+    --cyan-glow: rgba(0, 242, 254, 0.15);
+    --purple: #A855F7;
     --amber: #F59E0B;
-    --grid-line: rgba(255, 255, 255, 0.025);
+    --grid-line: rgba(255, 255, 255, 0.03);
   }
 
   * { box-sizing: border-box; }
@@ -26,10 +27,10 @@
   body {
     margin: 0;
     background: 
-      radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.08) 0%, transparent 40%),
-      radial-gradient(circle at 85% 65%, rgba(157, 78, 221, 0.08) 0%, transparent 40%),
-      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/40px 40px,
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/40px 40px,
+      radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.12) 0%, transparent 40%),
+      radial-gradient(circle at 90% 90%, rgba(168, 85, 247, 0.12) 0%, transparent 40%),
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/32px 32px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/32px 32px,
       var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
@@ -37,74 +38,117 @@
   }
 
   a { color: inherit; text-decoration: none; }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 0 28px; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 28px; }
 
-  /* Navbar */
+  /* Polished Glass Navbar */
   .navbar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    padding: 24px 0;
+    padding: 20px 0;
     border-bottom: 1px solid var(--panel-border);
     position: sticky;
     top: 0;
-    background: rgba(11, 15, 23, 0.95);
-    backdrop-filter: blur(8px);
+    background: rgba(7, 10, 15, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     z-index: 100;
   }
+
+  .nav-brand {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #FFF;
+  }
+
+  .nav-brand span { color: var(--cyan); }
 
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 20px;
-    font-family: 'IBM Plex Mono', monospace;
+    gap: 28px;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
   }
 
+  .nav-links a { color: var(--text-muted); transition: color 0.2s ease; }
   .nav-links a:hover { color: var(--cyan); }
 
   .nav-btn {
-    padding: 6px 14px;
-    background: rgba(0, 242, 254, 0.1);
+    padding: 8px 18px;
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(168, 85, 247, 0.15));
     color: var(--cyan) !important;
-    border: 1px solid rgba(0, 242, 254, 0.3);
-    border-radius: 6px;
+    border: 1px solid rgba(0, 242, 254, 0.4);
+    border-radius: 8px;
+    font-weight: 500;
     transition: all 0.3s ease;
   }
 
   .nav-btn:hover {
     background: var(--cyan);
     color: var(--bg) !important;
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
     transform: translateY(-2px);
   }
 
   /* Hero Section */
-  .hero { padding: 40px 0; }
+  .hero { padding: 48px 0 40px; }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #10B981;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .pulse-dot {
+    width: 6px;
+    height: 6px;
+    background: #10B981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10B981;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  }
 
   .hero h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+    font-weight: 800;
     line-height: 1.05;
-    background: linear-gradient(135deg, #FFFFFF 30%, var(--cyan) 70%, var(--purple) 100%);
+    background: linear-gradient(135deg, #FFFFFF 40%, var(--cyan) 75%, var(--purple) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin: 0;
+    letter-spacing: -0.03em;
   }
 
   .hero .role {
-    margin-top: 12px;
-    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    margin-top: 14px;
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
     color: var(--cyan);
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .meta-row {
-    margin-top: 20px;
+    margin-top: 24px;
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 20px;
     font-size: 14px;
     color: var(--text-muted);
   }
@@ -112,43 +156,50 @@
   .meta-row a:hover { color: var(--cyan); }
 
   /* Sections */
-  section { padding: 44px 0; border-top: 1px solid var(--panel-border); }
+  section { padding: 48px 0; border-top: 1px solid var(--panel-border); }
 
   .section-head {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
   }
 
   .section-head h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.6rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 700;
     margin: 0;
+    letter-spacing: -0.02em;
   }
 
   .section-head .tag {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
-    color: var(--text-muted);
+    color: var(--cyan);
   }
 
   /* About Me Section */
   .about-container {
     display: flex;
-    gap: 28px;
+    gap: 32px;
     align-items: center;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   }
 
   .profile-img-container { flex-shrink: 0; }
 
   .profile-img {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--cyan);
-    box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.35);
   }
 
   .summary-grid {
@@ -161,12 +212,12 @@
   .summary-card {
     background: var(--panel);
     border: 1px solid var(--panel-border);
-    padding: 18px 20px;
-    border-radius: 8px;
+    padding: 20px;
+    border-radius: 10px;
   }
 
   .summary-card-title {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     color: var(--cyan);
     margin-bottom: 6px;
@@ -178,36 +229,40 @@
     color: var(--text-muted);
   }
 
-  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
 
   .chip {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 12.5px;
-    padding: 6px 12px;
-    background: var(--panel);
+    padding: 7px 14px;
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--panel-border);
-    border-radius: 6px;
+    border-radius: 8px;
     color: var(--text);
+    transition: all 0.2s ease;
   }
 
-  /* Experience Section List */
-  .job-list {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  .chip:hover {
+    border-color: var(--cyan);
+    background: var(--cyan-glow);
+    color: var(--cyan);
   }
+
+  /* Experience Cards */
+  .job-list { display: flex; flex-direction: column; gap: 20px; }
 
   .job-card {
     background: var(--panel);
     border: 1px solid var(--panel-border);
-    border-radius: 8px;
-    padding: 24px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    border-radius: 12px;
+    padding: 24px 28px;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .job-card:hover {
     border-color: rgba(0, 242, 254, 0.4);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
   }
 
   .job-head {
@@ -220,21 +275,22 @@
   }
 
   .job-head h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.25rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
     color: #FFF;
     margin: 0;
   }
 
   .job-dates {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     color: var(--cyan);
   }
 
   .job-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 14px; }
 
-  /* Dropdown Menu under Welspun */
+  /* Dropdown Menu */
   .dropdown {
     position: relative;
     display: inline-block;
@@ -244,11 +300,11 @@
   .dropdown-btn {
     color: var(--cyan);
     cursor: pointer;
-    font-size: 13px;
-    font-family: 'IBM Plex Mono', monospace;
-    padding: 3px 8px;
+    font-size: 12.5px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 4px 10px;
     background: rgba(0, 242, 254, 0.08);
-    border-radius: 4px;
+    border-radius: 6px;
     border: 1px dashed rgba(0, 242, 254, 0.4);
   }
 
@@ -257,42 +313,37 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background: var(--panel);
-    border: 1px solid var(--panel-border);
+    background: #0F172A;
+    border: 1px solid rgba(0, 242, 254, 0.3);
     min-width: 320px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-    border-radius: 8px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
     padding: 8px 0;
     z-index: 50;
   }
 
   .dropdown-content a {
     color: var(--text);
-    padding: 10px 16px;
+    padding: 10px 18px;
     display: block;
     font-size: 13.5px;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: all 0.2s ease;
   }
 
   .dropdown-content a:hover {
-    background: rgba(0, 242, 254, 0.1);
+    background: rgba(0, 242, 254, 0.12);
     color: var(--cyan);
   }
 
   .dropdown:hover .dropdown-content { display: block; }
 
-  .project-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 12px;
-  }
+  .project-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
 
   .p-link-btn {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 12.5px;
-    padding: 6px 12px;
-    background: rgba(255, 255, 255, 0.04);
+    padding: 7px 14px;
+    background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--panel-border);
     border-radius: 6px;
     color: var(--cyan);
@@ -326,15 +377,19 @@
 <div class="wrap">
 
   <nav class="navbar">
+    <div class="nav-brand">Ravi Thakur<span>.</span></div>
     <div class="nav-links">
       <a href="#summary">Summary</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
-      <a href="projects.html" class="nav-btn">View All Projects →</a>
+      <a href="projects.html" class="nav-btn">View Projects →</a>
     </div>
   </nav>
 
   <header class="hero">
+    <div class="status-badge">
+      <span class="pulse-dot"></span> Available for Data Engineering Leadership
+    </div>
     <h1>Ravi Thakur</h1>
     <div class="role">Senior Azure Data Engineer</div>
     <div class="meta-row">
@@ -348,15 +403,15 @@
   <section class="summary" id="summary">
     <div class="section-head">
       <h2>Executive Summary</h2>
-      <span class="tag">About Me</span>
+      <span class="tag">// profile</span>
     </div>
 
     <div class="about-container">
       <div class="profile-img-container">
-        <img src="profile.jpg" alt="Ravi Thakur - Senior Azure Data Engineer" class="profile-img" onerror="this.src='https://via.placeholder.com/140/131B26/00F2FE?text=Data+Engineer'">
+        <img src="profile.jpg" alt="Ravi Thakur - Senior Azure Data Engineer" class="profile-img" onerror="this.src='https://via.placeholder.com/130/0F172A/00F2FE?text=Data+Engineer'">
       </div>
       <div>
-        <p style="margin-top: 0;">
+        <p style="margin: 0;">
           Senior Associate at Publicis Sapient with <span class="metric">6+ years</span> total engineering experience and <span class="metric">5 years</span> specializing in enterprise Azure Data Engineering. Proven expertise delivering cloud architectures across Finance, Banking, Supply Chain, and Manufacturing.
         </p>
       </div>
@@ -364,15 +419,15 @@
 
     <div class="summary-grid">
       <div class="summary-card">
-        <div class="summary-card-title">Cloud &amp; Data Pipelines</div>
+        <div class="summary-card-title">// Data Architectures</div>
         <p>Specialized in Azure Data Factory, Databricks, PySpark, Synapse, and Unity Catalog governance.</p>
       </div>
       <div class="summary-card">
-        <div class="summary-card-title">Generative AI</div>
+        <div class="summary-card-title">// Generative AI</div>
         <p>Hands-on builder of RAG interview platforms using OpenAI APIs, LlamaIndex, and MongoDB.</p>
       </div>
       <div class="summary-card">
-        <div class="summary-card-title">Enterprise Scale</div>
+        <div class="summary-card-title">// Enterprise Scale</div>
         <p>Executed 20+ TB warehouse migrations and 40+ TB environment replications with zero data loss.</p>
       </div>
     </div>
@@ -381,11 +436,11 @@
   <section id="skills">
     <div class="section-head">
       <h2>Technical Skills</h2>
-      <span class="tag">Core Stack</span>
+      <span class="tag">// core_stack</span>
     </div>
 
-    <div style="margin-bottom: 18px;">
-      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Cloud &amp; Data Engineering</h3>
+    <div style="margin-bottom: 20px;">
+      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 8px;">Cloud &amp; Data Platforms</h3>
       <div class="chip-row">
         <span class="chip">Microsoft Azure</span>
         <span class="chip">Azure Data Factory</span>
@@ -397,8 +452,8 @@
       </div>
     </div>
 
-    <div style="margin-bottom: 18px;">
-      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 6px;">Programming &amp; Processing</h3>
+    <div>
+      <h3 style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 8px;">Languages &amp; Frameworks</h3>
       <div class="chip-row">
         <span class="chip">Python</span>
         <span class="chip">SQL</span>
@@ -411,16 +466,15 @@
   <section id="experience">
     <div class="section-head">
       <h2>Professional Experience</h2>
-      <span class="tag">4 Roles</span>
+      <span class="tag">// history</span>
     </div>
 
     <div class="job-list">
 
-      <!-- Role 1 -->
       <div class="job-card">
         <div class="job-head">
           <h3>Senior Associate – Azure Data Engineer</h3>
-          <span class="job-dates">December 2024 – Present</span>
+          <span class="job-dates">Dec 2024 – Present</span>
         </div>
         <div class="job-sub">Publicis Sapient | Gurgaon, India · Client: Shell</div>
         <div class="project-links">
@@ -428,16 +482,15 @@
         </div>
       </div>
 
-      <!-- Role 2 -->
       <div class="job-card">
         <div class="job-head">
           <h3>Azure Data Engineer</h3>
-          <span class="job-dates">May 2022 – December 2024</span>
+          <span class="job-dates">May 2022 – Dec 2024</span>
         </div>
         <div class="job-sub">
           Welspun Transformation Services Ltd. | Gurgaon, India
           <div class="dropdown">
-            <span class="dropdown-btn">Projects Menu ▾</span>
+            <span class="dropdown-btn">Projects Options ▾</span>
             <div class="dropdown-content">
               <a href="projects.html?project=mpa">📊 Material Price Analysis Pipeline</a>
               <a href="projects.html?project=welhire">🤖 Wel-Hire AI Interview Platform (RAG)</a>
@@ -452,11 +505,10 @@
         </div>
       </div>
 
-      <!-- Role 3 -->
       <div class="job-card">
         <div class="job-head">
           <h3>Azure Data Engineer</h3>
-          <span class="job-dates">April 2021 – April 2022</span>
+          <span class="job-dates">Apr 2021 – Apr 2022</span>
         </div>
         <div class="job-sub">Gokul Agro Resources Ltd. | Ahmedabad, India</div>
         <div class="project-links">
@@ -464,11 +516,10 @@
         </div>
       </div>
 
-      <!-- Role 4 -->
       <div class="job-card">
         <div class="job-head">
           <h3>Data Engineer</h3>
-          <span class="job-dates">January 2019 – March 2021</span>
+          <span class="job-dates">Jan 2019 – Mar 2021</span>
         </div>
         <div class="job-sub">Nilkanth Concast Pvt. Ltd. | Ahmedabad, India</div>
         <div class="project-links">
