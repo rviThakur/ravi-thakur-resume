@@ -40,12 +40,12 @@
   a { color: inherit; text-decoration: none; }
   .wrap { max-width: 940px; margin: 0 auto; padding: 0 28px; }
 
-  /* Polished Glass Navbar */
+  /* Header & Navigation */
   .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    padding: 20px 0;
+    padding: 16px 0;
     border-bottom: 1px solid var(--panel-border);
     position: sticky;
     top: 0;
@@ -55,16 +55,6 @@
     z-index: 100;
   }
 
-  .nav-brand {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: #FFF;
-  }
-
-  .nav-brand span { color: var(--cyan); }
-
   .nav-links {
     display: flex;
     align-items: center;
@@ -73,28 +63,36 @@
     font-size: 13px;
   }
 
-  .nav-links a { color: var(--text-muted); transition: color 0.2s ease; }
-  .nav-links a:hover { color: var(--cyan); }
+  .nav-links a {
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--cyan);
+  }
 
   .nav-btn {
     padding: 8px 18px;
-    background: linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(168, 85, 247, 0.15));
+    background: rgba(0, 242, 254, 0.08);
     color: var(--cyan) !important;
-    border: 1px solid rgba(0, 242, 254, 0.4);
+    border: 1px solid rgba(0, 242, 254, 0.3);
     border-radius: 8px;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
   }
 
   .nav-btn:hover {
     background: var(--cyan);
-    color: var(--bg) !important;
-    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
-    transform: translateY(-2px);
+    color: #070A0F !important;
+    box-shadow: 0 0 18px rgba(0, 242, 254, 0.35);
+    transform: translateY(-1px);
   }
 
   /* Hero Section */
-  .hero { padding: 48px 0 40px; }
+  .hero { 
+    padding: 40px 0 32px; 
+  }
 
   .status-badge {
     display: inline-flex;
@@ -103,16 +101,16 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     color: #10B981;
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    padding: 4px 12px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    padding: 6px 14px;
     border-radius: 20px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   .pulse-dot {
-    width: 6px;
-    height: 6px;
+    width: 7px;
+    height: 7px;
     background: #10B981;
     border-radius: 50%;
     box-shadow: 0 0 8px #10B981;
@@ -155,7 +153,7 @@
 
   .meta-row a:hover { color: var(--cyan); }
 
-  /* Sections */
+  /* Content Sections */
   section { padding: 48px 0; border-top: 1px solid var(--panel-border); }
 
   .section-head {
@@ -179,7 +177,6 @@
     color: var(--cyan);
   }
 
-  /* About Me Section */
   .about-container {
     display: flex;
     gap: 32px;
@@ -290,7 +287,6 @@
 
   .job-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 14px; }
 
-  /* Dropdown Menu */
   .dropdown {
     position: relative;
     display: inline-block;
@@ -377,8 +373,8 @@
 <div class="wrap">
 
   <nav class="navbar">
-    <div class="nav-brand">Ravi Thakur<span>.</span></div>
     <div class="nav-links">
+      <a href="welcome.html">Welcome</a>
       <a href="#summary">Summary</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
@@ -388,7 +384,7 @@
 
   <header class="hero">
     <div class="status-badge">
-      <span class="pulse-dot"></span> Available for Data Engineering Leadership
+      <span class="pulse-dot"></span> Available for Senior Data Engineering Roles
     </div>
     <h1>Ravi Thakur</h1>
     <div class="role">Senior Azure Data Engineer</div>
@@ -492,9 +488,9 @@
           <div class="dropdown">
             <span class="dropdown-btn">Projects Options ▾</span>
             <div class="dropdown-content">
-              <a href="projects.html?project=mpa">📊 Material Price Analysis Pipeline</a>
-              <a href="projects.html?project=welhire">🤖 Wel-Hire AI Interview Platform (RAG)</a>
-              <a href="projects.html?project=fabric">⚡ Microsoft Fabric Implementation</a>
+              <a href="projects.html?project=mpa"> Material Price Analysis Pipeline</a>
+              <a href="projects.html?project=welhire"> Wel-Hire AI Interview Platform (RAG)</a>
+              <a href="projects.html?project=fabric"> Microsoft Fabric Implementation</a>
             </div>
           </div>
         </div>
